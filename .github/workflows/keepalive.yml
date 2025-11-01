@@ -25,3 +25,5 @@ jobs:
         env:
           PROJECT1_SUPABASE_KEY: ${{ secrets.PROJECT1_SUPABASE_KEY }}
           PROJECT2_SUPABASE_KEY: ${{ secrets.PROJECT2_SUPABASE_KEY }}
+          PROJECT1_SUPABASE_URL: ${{ vars.PROJECT1_SUPABASE_URL }}
+          PROJECT2_SUPABASE_URL: ${{ vars.PROJECT2_SUPABASE_URL }}
