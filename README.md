@@ -21,7 +21,7 @@ Keep your Supabase projects **warm and responsive** with this simple Node.js scr
 ```bash
 git clone https://github.com/your-username/supabase-keepalive.git
 cd supabase-keepalive
-````
+```
 
 ### 2. Install Dependencies
 
@@ -37,22 +37,22 @@ npm install
 
 ```json
 [
-  {
-    "name": "DeadSimpleForm",
-    "url": "https://dsf.supabase.co",
-    "envKey": "DSF_SUPABASE_KEY"
-  },
-  {
-    "name": "Deddit",
-    "url": "https://deddit.supabase.co",
-    "envKey": "DEDDIT_SUPABASE_KEY"
-  }
+	{
+		"name": "DeadSimpleForm",
+		"url": "https://dsf.supabase.co",
+		"envKey": "DSF_SUPABASE_KEY"
+	},
+	{
+		"name": "Deddit",
+		"url": "https://deddit.supabase.co",
+		"envKey": "DEDDIT_SUPABASE_KEY"
+	}
 ]
 ```
 
-* `name`: Label for logs
-* `url`: Your Supabase project base URL
-* `envKey`: Name of the environment variable that holds your Supabase API key
+- `name`: Label for logs
+- `url`: Your Supabase project base URL
+- `envKey`: Name of the environment variable that holds your Supabase API key
 
 ---
 
@@ -77,9 +77,9 @@ node keepalive.js
 
 This will:
 
-* Loop through all projects in `projects.json`
-* Use your `.env` file to fetch each project’s key
-* Ping a lightweight Supabase RPC or query to keep it active
+- Loop through all projects in `projects.json`
+- Use your `.env` file to fetch each project’s key
+- Ping a lightweight Supabase RPC or query to keep it active
 
 ---
 
@@ -93,8 +93,8 @@ Go to your repo → **Settings → Secrets and Variables → Actions** → **New
 
 Add all the env keys mentioned in `projects.json`, e.g.:
 
-* `DSF_SUPABASE_KEY`
-* `DEDDIT_SUPABASE_KEY`
+- `DSF_SUPABASE_KEY`
+- `DEDDIT_SUPABASE_KEY`
 
 Once added, your repo will automatically ping all projects twice a week.
 
@@ -104,25 +104,29 @@ Once added, your repo will automatically ping all projects twice a week.
 
 ### Script: `keepalive.js`
 
-* Imports `projects.json`
-* Loops through each project
-* Uses `@supabase/supabase-js` to run:
+- Imports `projects.json`
+- Loops through each project
+- Uses `@supabase/supabase-js` to run:
 
 ```js
-await supabase.rpc('pg_sleep', { seconds: 0 });
+await supabase.rpc("pg_sleep", { seconds: 0 });
 ```
 
 > You can replace this with any lightweight query like:
 >
 > ```js
-> await supabase.from('your_table').select('id').limit(1);
+> await supabase.from("your_table").select("id").limit(1);
 > ```
+>
+> this table should exist in your database, need be public?
 
 ---
 
 ## 🧪 Optional: Add `pg_sleep` to Your Supabase Projects
 
-If you'd like to use the `pg_sleep` RPC as your ping:
+If you'd like to use the `pg_sleep` RPC as your ping, it needs to be created in each Supabase project:
+
+> dashboard → SQL Editor → New Query and text below --> Run
 
 ```sql
 create function pg_sleep(seconds integer)
@@ -132,6 +136,11 @@ begin
 end;
 $$ language plpgsql;
 ```
+
+> OR:
+> dashboard → Database → Functions → Create new Function → change `Name of function` and `Arguments` and `Definition` like the image shows -> Save
+
+![image](./image.png)
 
 Otherwise, use a regular SELECT query in the script.
 
@@ -157,8 +166,8 @@ supabase-keepalive/
 
 This workflow is triggered on:
 
-* 🗓️ **Monday** at 05:00 UTC
-* 🗓️ **Thursday** at 05:00 UTC
+- 🗓️ **Monday** at 05:00 UTC
+- 🗓️ **Thursday** at 05:00 UTC
 
 Modify `.github/workflows/keepalive.yml` if you'd like different timing.
 
@@ -166,9 +175,9 @@ Modify `.github/workflows/keepalive.yml` if you'd like different timing.
 
 ## 🧩 Customization Ideas
 
-* Add Slack/Discord alerts on failure
-* Log ping results to Supabase itself
-* Ping other services (e.g., Vercel functions, Firebase)
+- Add Slack/Discord alerts on failure
+- Log ping results to Supabase itself
+- Ping other services (e.g., Vercel functions, Firebase)
 
 ---
 
@@ -181,4 +190,3 @@ MIT — do what you want, just don't blame me if Supabase gets angry 🐘
 ## 💬 Questions?
 
 Open an issue or ping me on [GitHub Discussions](https://github.com/your-username/supabase-keepalive/discussions) once available.
-

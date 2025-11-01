@@ -1,13 +1,12 @@
 [
   {
-    "name": "DeadSimpleForm",
-    "url": "https://project.supabase.co",
+    "name": "keepalive-supabase-project1",
+    "urlKey": "PROJECT1_SUPABASE_URL",
     "envKey": "PROJECT1_SUPABASE_KEY"
   },
   {
-    "name": "Deddit",
-    "url": "https://project.supabase.co",
+    "name": "keepalive-supabase-project2",
+    "urlKey": "PROJECT2_SUPABASE_URL",
     "envKey": "PROJECT2_SUPABASE_KEY"
   }
 ]
-

@@ -1,9 +1,10 @@
 name: Keep Supabase Projects Awake
 
 on:
+  workflow_dispatch: # add manual trigger
   schedule:
-    - cron: '0 5 * * 1'     # Monday 05:00 UTC
-    - cron: '0 5 * * 4'     # Thursday 05:00 UTC
+    - cron: "0 5 * * 1" # Monday 05:00 UTC
+    - cron: "0 5 * * 4" # Thursday 05:00 UTC
 
 jobs:
   keepalive:
@@ -22,6 +23,5 @@ jobs:
       - name: Run keepalive script
         run: npm start
         env:
-          DSF_SUPABASE_KEY: ${{ secrets.DSF_SUPABASE_KEY }}
-          DEDDIT_SUPABASE_KEY: ${{ secrets.DEDDIT_SUPABASE_KEY }}
-
+          PROJECT1_SUPABASE_KEY: ${{ secrets.PROJECT1_SUPABASE_KEY }}
+          PROJECT2_SUPABASE_KEY: ${{ secrets.PROJECT2_SUPABASE_KEY }}
