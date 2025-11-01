@@ -56,7 +56,9 @@ npm install
 
 ---
 
-### Set Your Keys in `.env`
+### Set Your Keys in `.env` or GitHub Secrets
+
+**Get your Supabase anon or service role keys from the Supabase dashboard → Connect → App Frameworks -> .env.local**
 
 Create a `.env` file in the project root:
 
