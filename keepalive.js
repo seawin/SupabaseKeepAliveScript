@@ -23,7 +23,7 @@ async function ping(name, urlKey, envKey) {
     console.warn(`[⚠️] Skipping ${name} – URL for env var ${urlKey} is marked as unused`);
     return;
   } else {
-    console.log(`[🔑] Using URL from env var ${urlKey}`);
+    console.log(`[🔑] ${name} Using URL from env var ${urlKey}`);
   }
 
   const supabase = createClient(url, key);
@@ -39,11 +39,11 @@ async function ping(name, urlKey, envKey) {
 
 async function run() {
   console.log(`[🌐] Starting keep-alive ping...`);
-  console.log('----------------------------------------');
+  console.log('='.repeat(40));
   for (const project of projects) {
     await ping(project.name, project.urlKey, project.envKey);
-    console.log('----------------------------------------');
   }
+  console.log('='.repeat(40));
 }
 
 run();

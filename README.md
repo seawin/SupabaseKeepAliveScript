@@ -144,6 +144,8 @@ $$ language plpgsql;
 
 Otherwise, use a regular SELECT query in the script.
 
+Then, you can see the real request via Supabase dashboard → `Reports` or `Logs` panel → `API Gateway` or `PostgREST` panel.
+
 ---
 
 ## 📁 Project Structure
