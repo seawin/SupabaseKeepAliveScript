@@ -34,6 +34,7 @@ async function ping(name, urlKey, envKey) {
     console.log(`[✅] ${name} is awake (${new Date().toISOString()})`);
   } catch (err) {
     console.error(`[❌] ${name} failed to wake: ${err.message}`);
+    throw 'fail to prevent pausing!';
   }
 }
 
